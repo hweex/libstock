@@ -9,18 +9,32 @@
  */
 #include <time.h>
 
-struct OHLC {
+typedef struct OHCL_t {
     double open;
     double close;
     double high;
     double close;
-    unsigned int volume;
-};
+} OHCL;
 
+typedef unsigned int Volume_t;
 
 template<typename T> class TimeSeries {
     time_t time;
     T *data;
 };
 
-typedef TimeSeries<OHLC> CandleStickData;
+typedef TimeSeries<OHCL> OHCL_ts;
+
+void ma(OHCL_ts c, TimeSeries *output);
+
+void ema(OHCL_ts c, TimeSeries *output);
+
+struct MACD_t {
+    double dif;
+    double dem;
+    double osc;
+};
+
+typedef TimeSeries<MACD_t> MACD_ts;
+
+void macd(OHCL_ts c, int slow, int fast, int average, MACD *output)
