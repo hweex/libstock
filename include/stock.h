@@ -7,10 +7,20 @@
  * version 2, as published by the Free Software Foundation.
  *
  */
+#include <time.h>
 
- struct OHLC {
+struct OHLC {
     double open;
     double close;
     double high;
     double close;
- }
+    unsigned int volume;
+};
+
+
+template<typename T> class TimeSeries {
+    time_t time;
+    T *data;
+};
+
+typedef TimeSeries<OHLC> CandleStickData;
