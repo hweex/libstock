@@ -7,6 +7,8 @@
  * version 2, as published by the Free Software Foundation.
  *
  */
+#ifndef __STOCK_H__
+#define __STOCK_H__
 #include <time.h>
 
 typedef struct OHCL_t {
@@ -25,9 +27,9 @@ template<typename T> class TimeSeries {
 
 typedef TimeSeries<OHCL> OHCL_ts;
 
-void ma(OHCL_ts c, TimeSeries *output);
+extern void ma(OHCL_ts c, TimeSeries *output);
 
-void ema(OHCL_ts c, TimeSeries *output);
+extern void ema(OHCL_ts c, TimeSeries *output);
 
 struct MACD_t {
     double dif;
@@ -37,4 +39,6 @@ struct MACD_t {
 
 typedef TimeSeries<MACD_t> MACD_ts;
 
-void macd(OHCL_ts c, int slow, int fast, int average, MACD *output)
+extern void macd(OHCL_ts c, int slow, int fast, int average, MACD *output);
+
+#endif
