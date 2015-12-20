@@ -10,35 +10,40 @@
 #ifndef __STOCK_H__
 #define __STOCK_H__
 #include <time.h>
+#include <list>
 
-typedef struct OHCL_t {
+template<typename T> class TimeSeries {
+    class TimedData {
+        time_t time;
+        T* data;
+    };
+
+    std::list<TimedData> timeseries;
+
+public:
+	void insert(time_t time, T& data);
+    void remove();
+};
+
+struct OHCL {
     double open;
     double close;
     double high;
-    double close;
-} OHCL;
-
-typedef unsigned int Volume_t;
-
-template<typename T> class TimeSeries {
-    time_t time;
-    T *data;
+    double low;
+    /* unsigned int volume; */
 };
 
-typedef TimeSeries<OHCL> OHCL_ts;
+extern TimeSeries<double>* ma(int c, TimeSeries<OHCL> &ohcl);
 
-extern void ma(OHCL_ts c, TimeSeries *output);
+extern TimeSeries<double>* ema(int c, TimeSeries<OHCL> &ohcl);
 
-extern void ema(OHCL_ts c, TimeSeries *output);
-
-struct MACD_t {
+struct MACD {
     double dif;
     double dem;
     double osc;
 };
 
-typedef TimeSeries<MACD_t> MACD_ts;
-
-extern void macd(OHCL_ts c, int slow, int fast, int average, MACD *output);
+extern TimeSeries<MACD>* macd(int slow, int fast, int average, 
+    TimeSeries<OHCL> &ohcl);
 
 #endif
