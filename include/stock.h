@@ -33,9 +33,9 @@ struct OHCL {
     /* unsigned int volume; */
 };
 
-extern TimeSeries<double>* ma(int c, TimeSeries<OHCL> &ohcl);
+extern void ma(int period, TimeSeries<OHCL> &ohcl, TimeSeries<double> &ma);
 
-extern TimeSeries<double>* ema(int c, TimeSeries<OHCL> &ohcl);
+extern void ema(int period, TimeSeries<OHCL> &ohcl TimeSeries<double> &ma);
 
 struct MACD {
     double dif;
@@ -43,7 +43,7 @@ struct MACD {
     double osc;
 };
 
-extern TimeSeries<MACD>* macd(int slow, int fast, int average, 
-    TimeSeries<OHCL> &ohcl);
+extern void macd(int slow, int fast, int average, 
+    TimeSeries<OHCL> &ohcl, TimeSeries<MACD> &macd);
 
 #endif
