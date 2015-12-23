@@ -9,19 +9,24 @@
  */
 #ifndef __STOCK_H__
 #define __STOCK_H__
-#include <time.h>
+#include <ctime>
 #include <list>
 
 template<typename T> class TimeSeries {
-    class TimedData {
+    struct TimedData {
         time_t time;
-        T* data;
+        T& data;
     };
 
     std::list<TimedData> timeseries;
 
 public:
-	void insert(time_t time, T& data);
+	void insert(time_t time, T& data)
+	{
+		TimedData td = {time, data};
+        // TODO: should insert in order (by time)
+		timeseries.push_back(td);
+	}
     void remove();
 };
 
@@ -33,9 +38,9 @@ struct OHCL {
     /* unsigned int volume; */
 };
 
-extern void ma(int period, TimeSeries<OHCL> &ohcl, TimeSeries<double> &ma);
+extern void ma(int period, const TimeSeries<OHCL> &ohcl, TimeSeries<double> &ma);
 
-extern void ema(int period, TimeSeries<OHCL> &ohcl TimeSeries<double> &ma);
+extern void ema(int period, const TimeSeries<OHCL> &ohcl, TimeSeries<double> &ma);
 
 struct MACD {
     double dif;
