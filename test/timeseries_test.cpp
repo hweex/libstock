@@ -1,6 +1,8 @@
 #define BOOST_TEST_MODULE OHCL_TEST
 #include <boost/test/included/unit_test.hpp>
 
+#include "../include/stock.h"
+
 BOOST_AUTO_TEST_SUITE (timeseries_test)
 
 BOOST_AUTO_TEST_CASE (timeseries_create) {
