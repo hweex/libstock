@@ -38,6 +38,14 @@ struct OHCL {
     /* unsigned int volume; */
 };
 
+struct OHCL_V {
+    double open;
+    double close;
+    double high;
+    double low;
+    unsigned int volume;
+};
+
 extern void ma(int period, const TimeSeries<OHCL> &ohcl, TimeSeries<double> &ma);
 
 extern void ema(int period, const TimeSeries<OHCL> &ohcl, TimeSeries<double> &ma);
