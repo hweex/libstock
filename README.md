@@ -15,14 +15,6 @@ make
 
 ```
 cd build
-cmake ../
-nmake
-```
-
-or
-
-```
-cd build
-cmake -G "NMake Makefiles" ../
+cmake ../ -G "NMake Makefiles"
 nmake
 ```

@@ -1,6 +1,5 @@
 cmake_minimum_required (VERSION 2.6)
 project (libstock)
-AUX_SOURCE_DIRECTORY(. DIR_SRCS)
 add_subdirectory (src)
 
 find_package( Boost 1.60 COMPONENTS program_options regex )
