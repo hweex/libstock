@@ -12,6 +12,12 @@
 #include <ctime>
 #include <list>
 
+class Source;
+class Sink;
+class Node;
+class WorkFlow;
+class Stream;
+
 template<typename T> class TimeSeries {
     struct TimedData {
         time_t time;
@@ -47,12 +53,12 @@ struct OHCL_V {
 };
 
 extern void ma(int period,
-               const TimeSeries<OHCL> &ohcl,
-               TimeSeries<double> &ma);
+               const Stream<TimeSeries<OHCL>> &ohcl,
+               Stream<TimeSeries<double>> &ma);
 
 extern void ema(int period,
-                const TimeSeries<OHCL> &ohcl,
-                TimeSeries<double> &ma);
+                const Stream<TimeSeries<OHCL>> &ohcl,
+                stream<TimeSeries<double>> &ma);
 
 struct MACD {
     double dif;
@@ -61,7 +67,7 @@ struct MACD {
 };
 
 extern void macd(int slow, int fast, int average,
-                 TimeSeries<OHCL> &ohcl,
-                 TimeSeries<MACD> &macd);
+                 const Stream<TimeSeries<OHCL>> &ohcl,
+                 Stream<TimeSeries<MACD>> &macd);
 
 #endif

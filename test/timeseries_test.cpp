@@ -22,4 +22,16 @@ BOOST_AUTO_TEST_CASE (timeseries_insert) {
     ts.insert(now, o);
 }
 
+BOOST_AUTO_TEST_CASE (WorkFlow) {
+	/* dummy code
+    stream instream;
+    stream outstream;
+    WorkFlow w = new filter(new MaFlow(5)); // have instream & outstream
+    Source s = new OHCL_Source(); // instream = Null
+	Sink ma_array; // outstream = Null
+	s >> w >> ma_array;
+	cout << ma_array;
+	*/
+}
+
 BOOST_AUTO_TEST_SUITE_END()
