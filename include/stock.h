@@ -1,4 +1,3 @@
-
 /*
  * Copyright(c) 2015 Xiao Hui <xhui.xiao@gmail.com>. All rights reserved.
  *
@@ -7,6 +6,7 @@
  * version 2, as published by the Free Software Foundation.
  *
  */
+
 #ifndef __STOCK_H__
 #define __STOCK_H__
 #include <ctime>
