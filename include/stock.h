@@ -27,13 +27,19 @@ template<typename T> class TimeSeries {
     std::list<TimedData> timeseries;
 
 public:
-	void insert(time_t time, T& data)
-	{
+	void insert(time_t time, T& data) {
 		TimedData td = {time, data};
         // TODO: should insert in order (by time)
 		timeseries.push_back(td);
 	}
+
     void remove();
+
+/*
+	T at(unsigned int i) {
+		return timeseries[i];
+	}
+	*/
 };
 
 struct OHCL {
